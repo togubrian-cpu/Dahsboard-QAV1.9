@@ -6,7 +6,11 @@
     <title>Dashboard Quality - Full Screen TV</title>
 
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
             background-color: #000;
@@ -15,6 +19,7 @@
             height: 100vh;
             width: 100vw;
             overflow: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
         h2 { 
@@ -41,6 +46,8 @@
             width: 100%;
             height: 100%;
             border: none;
+            transform: translateZ(0);
+            backface-visibility: hidden;
         }
 
         .tab-panel {
@@ -48,13 +55,14 @@
             width: 100%;
             height: 100%;
             opacity: 0;
-            visibility: hidden;
-            transition: opacity 1.2s ease-in-out;
+            pointer-events: none;
+            transition: opacity 0.8s ease-in-out;
+            will-change: opacity;
         }
 
         .tab-panel.active {
             opacity: 1;
-            visibility: visible;
+            pointer-events: auto;
             z-index: 1;
         }
 
@@ -77,30 +85,62 @@
 <div class="dashboard-content">
 
     <!-- SLIDES -->
-    <div id="slide0" class="tab-panel active"><iframe src="https://app.powerbi.com/view?r=eyJrIjoiNmQ0ZjJmM2UtNjI4Ny00MTAwLWFjMDktNTVmZDc1YWUxZTA0IiwidCI6IjI5ZTZhYTNhLTljZTItNDVmYS1iYjZhLWZlYWUwMDU2NjVhZiIsImMiOjEwfQ%3D%3D&pageName=d5a79356a4b7dddb3b12"></iframe></div>
-    <div id="slide1" class="tab-panel"><iframe src="https://app.powerbi.com/view?r=eyJrIjoiNmQ0ZjJmM2UtNjI4Ny00MTAwLWFjMDktNTVmZDc1YWUxZTA0IiwidCI6IjI5ZTZhYTNhLTljZTItNDVmYS1iYjZhLWZlYWUwMDU2NjVhZiIsImMiOjEwfQ%3D%3D&pageName=c59f9a2c316249ebc41d"></iframe></div>
-    <div id="slide2" class="tab-panel"><iframe src="https://app.powerbi.com/view?r=eyJrIjoiNmQ0ZjJmM2UtNjI4Ny00MTAwLWFjMDktNTVmZDc1YWUxZTA0IiwidCI6IjI5ZTZhYTNhLTljZTItNDVmYS1iYjZhLWZlYWUwMDU2NjVhZiIsImMiOjEwfQ%3D%3D&pageName=71056e5434aeae55990d"></iframe></div>
-    <div id="slide3" class="tab-panel"><iframe src="https://app.powerbi.com/view?r=eyJrIjoiNmQ0ZjJmM2UtNjI4Ny00MTAwLWFjMDktNTVmZDc1YWUxZTA0IiwidCI6IjI5ZTZhYTNhLTljZTItNDVmYS1iYjZhLWZlYWUwMDU2NjVhZiIsImMiOjEwfQ%3D%3D&pageName=6af54b18951d5ce9bb6c"></iframe></div>
-    <div id="slide4" class="tab-panel"><iframe src="https://app.powerbi.com/view?r=eyJrIjoiNmQ0ZjJmM2UtNjI4Ny00MTAwLWFjMDktNTVmZDc1YWUxZTA0IiwidCI6IjI5ZTZhYTNhLTljZTItNDVmYS1iYjZhLWZlYWUwMDU2NjVhZiIsImMiOjEwfQ%3D%3D&pageName=9b351f8381ea904cc214"></iframe></div>
-    <div id="slide5" class="tab-panel"><iframe src="https://app.powerbi.com/view?r=eyJrIjoiNmQ0ZjJmM2UtNjI4Ny00MTAwLWFjMDktNTVmZDc1YWUxZTA0IiwidCI6IjI5ZTZhYTNhLTljZTItNDVmYS1iYjZhLWZlYWUwMDU2NjVhZiIsImMiOjEwfQ%3D%3D&pageName=e1744970a0e90b704012"></iframe></div>
-    <div id="slide6" class="tab-panel"><iframe src="https://app.powerbi.com/view?r=eyJrIjoiNmQ0ZjJmM2UtNjI4Ny00MTAwLWFjMDktNTVmZDc1YWUxZTA0IiwidCI6IjI5ZTZhYTNhLTljZTItNDVmYS1iYjZhLWZlYWUwMDU2NjVhZiIsImMiOjEwfQ%3D%3D&pageName=23e00be0574058995014"></iframe></div>
+    <div class="tab-panel active">
+        <iframe src="https://app.powerbi.com/view?r=eyJrIjoiNmQ0ZjJmM2UtNjI4Ny00MTAwLWFjMDktNTVmZDc1YWUxZTA0IiwidCI6IjI5ZTZhYTNhLTljZTItNDVmYS1iYjZhLWZlYWUwMDU2NjVhZiIsImMiOjEwfQ%3D%3D&pageName=d5a79356a4b7dddb3b12"></iframe>
+    </div>
 
+    <div class="tab-panel">
+        <iframe src="https://app.powerbi.com/view?r=eyJrIjoiNmQ0ZjJmM2UtNjI4Ny00MTAwLWFjMDktNTVmZDc1YWUxZTA0IiwidCI6IjI5ZTZhYTNhLTljZTItNDVmYS1iYjZhLWZlYWUwMDU2NjVhZiIsImMiOjEwfQ%3D%3D&pageName=6af54b18951d5ce9bb6c"></iframe>
+    </div>
+
+    <div class="tab-panel">
+        <iframe src="https://app.powerbi.com/view?r=eyJrIjoiNmQ0ZjJmM2UtNjI4Ny00MTAwLWFjMDktNTVmZDc1YWUxZTA0IiwidCI6IjI5ZTZhYTNhLTljZTItNDVmYS1iYjZhLWZlYWUwMDU2NjVhZiIsImMiOjEwfQ%3D%3D&pageName=c59f9a2c316249ebc41d"></iframe>
+    </div>
+
+    <div class="tab-panel">
+        <iframe src="https://app.powerbi.com/view?r=eyJrIjoiNmQ0ZjJmM2UtNjI4Ny00MTAwLWFjMDktNTVmZDc1YWUxZTA0IiwidCI6IjI5ZTZhYTNhLTljZTItNDVmYS1iYjZhLWZlYWUwMDU2NjVhZiIsImMiOjEwfQ%3D%3D&pageName=71056e5434aeae55990d"></iframe>
+    </div>
+
+    <div class="tab-panel">
+        <iframe src="https://app.powerbi.com/view?r=eyJrIjoiNmQ0ZjJmM2UtNjI4Ny00MTAwLWFjMDktNTVmZDc1YWUxZTA0IiwidCI6IjI5ZTZhYTNhLTljZTItNDVmYS1iYjZhLWZlYWUwMDU2NjVhZiIsImMiOjEwfQ%3D%3D&pageName=9b351f8381ea904cc214"></iframe>
+    </div>
+
+    <div class="tab-panel">
+        <iframe src="https://app.powerbi.com/view?r=eyJrIjoiNmQ0ZjJmM2UtNjI4Ny00MTAwLWFjMDktNTVmZDc1YWUxZTA0IiwidCI6IjI5ZTZhYTNhLTljZTItNDVmYS1iYjZhLWZlYWUwMDU2NjVhZiIsImMiOjEwfQ%3D%3D&pageName=e1744970a0e90b704012"></iframe>
+    </div>
+
+    <div class="tab-panel">
+        <iframe src="https://app.powerbi.com/view?r=eyJrIjoiNmQ0ZjJmM2UtNjI4Ny00MTAwLWFjMDktNTVmZDc1YWUxZTA0IiwidCI6IjI5ZTZhYTNhLTljZTItNDVmYS1iYjZhLWZlYWUwMDU2NjVhZiIsImMiOjEwfQ%3D%3D&pageName=23e00be0574058995014"></iframe>
+    </div>
+
+    <!-- Progress -->
     <div class="progress-bar" id="progressBar"></div>
+
 </div>
 
 <script>
-    let currentSlide = 0;
-    const totalSlides = 7;
-    const intervalTime = 35000;
+    // ==============================
+    // 🔧 KONFIGURASI (TINGGAL UBAH ANGKA MENIT)
+    // ==============================
 
+    const SLIDE_INTERVAL = 20 * 1000;      // ⏱️ 20 detik per slide
+    const REFRESH_INTERVAL = 20 * 60 * 1000; // 🔄 20 menit refresh
+    const MOUSE_IDLE_DELAY = 3 * 1000;    // 🖱️ 3 detik pause delay
+
+    // ==============================
+    // SYSTEM (JANGAN DIUBAH)
+    // ==============================
+
+    let currentSlide = 0;
     const panels = document.getElementsByClassName("tab-panel");
+    const totalSlides = panels.length;
+
     const progressBar = document.getElementById("progressBar");
 
-    let slideInterval;
-    let progressStartTime;
-    let remainingTime = intervalTime;
+    let startTime;
+    let animationFrame;
     let isPaused = false;
-    let resumeTimeout;
+    let pausedTime = 0;
 
     function showSlide(index) {
         for (let i = 0; i < panels.length; i++) {
@@ -110,115 +150,88 @@
     }
 
     function nextSlide() {
-        remainingTime = intervalTime;
         currentSlide = (currentSlide + 1) % totalSlides;
         showSlide(currentSlide);
-        startProgressBar();
+        startProgress();
     }
 
-    function startProgressBar() {
-        progressBar.style.transition = "none";
-        progressBar.style.width = "0%";
+    function startProgress() {
+        cancelAnimationFrame(animationFrame);
 
-        setTimeout(() => {
-            progressBar.style.transition = `width ${remainingTime}ms linear`;
-            progressBar.style.width = "100%";
-        }, 50);
+        startTime = Date.now();
+        pausedTime = 0;
 
-        progressStartTime = Date.now();
+        function animate() {
+            if (isPaused) return;
 
-        clearInterval(slideInterval);
-        slideInterval = setInterval(nextSlide, remainingTime);
+            const elapsed = Date.now() - startTime;
+            const progress = Math.min(elapsed / SLIDE_INTERVAL, 1);
+
+            progressBar.style.width = (progress * 100) + "%";
+
+            if (progress < 1) {
+                animationFrame = requestAnimationFrame(animate);
+            } else {
+                nextSlide();
+            }
+        }
+
+        animate();
     }
 
     function pauseSlider() {
         if (isPaused) return;
         isPaused = true;
-
-        clearInterval(slideInterval);
-
-        const elapsed = Date.now() - progressStartTime;
-        remainingTime = remainingTime - elapsed;
-
-        const computedWidth = window.getComputedStyle(progressBar).width;
-        progressBar.style.transition = "none";
-        progressBar.style.width = computedWidth;
+        pausedTime = Date.now();
     }
 
     function resumeSlider() {
         if (!isPaused) return;
+
         isPaused = false;
-        startProgressBar();
+
+        const pauseDuration = Date.now() - pausedTime;
+        startTime += pauseDuration;
+
+        animationFrame = requestAnimationFrame(runAnimation);
     }
 
-    function resetResumeTimer() {
-        pauseSlider();
+    function runAnimation() {
+        const elapsed = Date.now() - startTime;
+        const progress = Math.min(elapsed / SLIDE_INTERVAL, 1);
 
-        clearTimeout(resumeTimeout);
-        resumeTimeout = setTimeout(() => {
-            remainingTime = intervalTime;
-            resumeSlider();
-        }, 10000);
-    }
+        progressBar.style.width = (progress * 100) + "%";
 
-    document.addEventListener("mousemove", resetResumeTimer);
-    document.addEventListener("click", resetResumeTimer);
-    document.addEventListener("keydown", resetResumeTimer);
-
-    showSlide(currentSlide);
-    startProgressBar();
-
-    // ===============================
-    // 🔥 LG HARDCORE KEEP ALIVE FINAL
-    // ===============================
-
-    // 1. Pixel change (REAL visual change)
-    setInterval(() => {
-        document.body.style.filter = "brightness(100.1%)";
-        setTimeout(() => {
-            document.body.style.filter = "brightness(100%)";
-        }, 200);
-    }, 15000);
-
-    // 2. Force reflow
-    setInterval(() => {
-        document.body.style.display = "none";
-        document.body.offsetHeight;
-        document.body.style.display = "block";
-    }, 60000);
-
-    // 3. Refresh active iframe (REAL activity)
-    function refreshActiveIframe() {
-        const iframe = document.querySelector(".tab-panel.active iframe");
-        if (iframe) {
-            const src = iframe.src;
-            iframe.src = "";
-            setTimeout(() => { iframe.src = src; }, 300);
+        if (progress < 1 && !isPaused) {
+            animationFrame = requestAnimationFrame(runAnimation);
+        } else if (progress >= 1) {
+            nextSlide();
         }
     }
-    setInterval(refreshActiveIframe, 120000);
 
-    // 4. Scroll trick
-    setInterval(() => {
-        window.scrollTo(0, 1);
-        window.scrollTo(0, 0);
-    }, 20000);
+    // Pause saat mouse gerak
+    let mouseTimer;
+    document.addEventListener("mousemove", () => {
+        pauseSlider();
 
-    // 5. Title change (DOM update)
-    setInterval(() => {
-        document.title = "Dashboard " + Date.now();
-    }, 20000);
+        clearTimeout(mouseTimer);
+        mouseTimer = setTimeout(() => {
+            resumeSlider();
+        }, MOUSE_IDLE_DELAY);
+    });
 
-    // 6. Focus enforcement
-    setInterval(() => {
-        window.focus();
-    }, 20000);
+    // Start
+    window.addEventListener("load", () => {
+        setTimeout(() => {
+            showSlide(currentSlide);
+            startProgress();
+        }, 2000);
+    });
 
-    // 7. Auto refresh full page (backup)
+    // Auto refresh
     setInterval(() => {
         location.reload();
-    }, 600000);
-
+    }, REFRESH_INTERVAL);
 </script>
 
 </body>
